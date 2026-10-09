@@ -13,3 +13,4 @@ docker run -d \
     postgres
 
 
+docker build --target seeder -t chinook-seeder:1.0 .

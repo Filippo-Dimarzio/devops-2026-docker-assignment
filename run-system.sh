@@ -14,3 +14,5 @@ docker run -d \
 
 
 docker build --target seeder -t chinook-seeder:1.0 .
+
+until docker exec chinook-fdm pg_isready -U chinook-fdm1; do sleep 1; done

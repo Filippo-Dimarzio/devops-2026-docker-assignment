@@ -24,4 +24,9 @@ docker run --rm \
     -e SQLITE_FILE=/app/Chinook.db \
     -e DATABASE_URL=postgres://chinook-fdm1:assignment1@chinook-fdm:5432/chinook-fdm-database \
     chinook-seeder:1.0
+
+docker build --target agent -t chinook-agent:1.0 .
+
+
+
     

@@ -28,5 +28,18 @@ docker run --rm \
 docker build --target agent -t chinook-agent:1.0 .
 
 
+docker run -d \
+    --name chinook-gateway \
+    --network chinook-net \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v "$(pwd)/mcp_config.yaml:/mcp_config.yaml:ro" \
+    -v "$(pwd)/mcp_secret.env:/run/secrets/database-url:ro" \
+    docker/mcp-gateway:latest \
+    --transport=sse \
+    --secrets=/run/secrets/database-url \
+    --allow-unauthenticated \
+    --servers=cockroachdb \
+    --tools=execute_query \
+    --config=/mcp_config.yaml
 
     
